@@ -17,6 +17,10 @@ class HomeController1 extends Controller
     {
         return view('Home');
     }*/
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function Home1()
     {
         return view ('Home1');

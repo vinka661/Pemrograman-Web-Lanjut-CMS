@@ -34,3 +34,24 @@ Route::get('/', function () {
 
 Auth:: routes();
 Route::get('/home', 'HomeController1@home1')->name('home');
+//route untuk menampilkan halaman tambah data
+Route::get('/collect/add', 'MoreCollectController@add');
+//route untuk memproses penambahan data
+Route::post('/collect/create', 'MoreCollectController@create');
+//route untuk menampilkan halaman edit data
+Route::get('/collect/edit/{id}', 'MoreCollectController@edit');
+//route untuk memproses update data
+Route::post('/collect/update/{id}', 'MoreCollectController@update');
+//route untuk memproses hapus data
+Route::get('/collect/delete/{id}', 'MoreCollectController@delete');
+//route untuk menampilkan halaman tambah data
+Route::get('/art/add', 'MoreArtController@add');
+//route untuk memproses penambahan data
+Route::post('/art/create', 'MoreArtController@create');
+//route untuk menampilkan halaman edit data
+Route::get('/art/edit/{id}', 'MoreArtController@edit');
+//route untuk memproses update data
+Route::post('/art/update/{id}', 'MoreArtController@update');
+//route untuk memproses hapus data
+Route::get('/art/delete/{id}', 'MoreArtController@delete');
+//Route::get('/home', 'HomeController@index')->name('home');

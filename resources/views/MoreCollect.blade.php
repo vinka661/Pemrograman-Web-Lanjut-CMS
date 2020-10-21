@@ -33,20 +33,28 @@
             </div>
         </nav>
         <section class="page-section bg-dark">
-        <table border='1' >
+        <a href="collect/add" class="btn btn-primary float-left"><i class="fas fa-plus"></i> Tambah Data</a>
+        <br>
+        <br>
+        <table class="table-bordered">
         <thead>
             <tr>
                 <th>Nama</th>
                 <th>Merk</th>
                 <th>Keterangan</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach($collection as $c)
 		    <tr>
-                <td>{{$c->nama}}</td>
-                <td>{{$c->merk}}</td>
-                <td>{{$c->keterangan}}</td>
+                <td width="300">{{$c->nama}}</td>
+                <td width="400">{{$c->merk}}</td>
+                <td width="700">{{$c->keterangan}}</td>
+                <td width="200">
+                    <h5><a href="collect/edit/{{ $c->id }}" class="badge badge-warning"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="collect/delete/{{ $c->id }}" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a></h5>
+                </td>
             </tr>
 	        @endforeach
         </tbody>

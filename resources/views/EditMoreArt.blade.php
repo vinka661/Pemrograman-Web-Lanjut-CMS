@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>VAS Gallery || Halaman More Article</title>
+        <title>VAS Gallery || Halaman Edit Data More Article</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../../css/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -32,41 +32,31 @@
                 </div>
             </div>
         </nav>
-        <section class="page-section bg-dark center">
-        <a href="art/add" class="btn btn-primary float-left"><i class="fas fa-plus"></i> Tambah Data</a>
-        <br>
-        <br>
-        <table class="table-bordered">
-        <thead>
-            <tr>
-                <th width="300">Nama</th>
-                <th width="500">Keterangan</th>
-                <th width="300">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($brand as $a)
-		    <tr>
-                <td>{{$a->nama}}</td>
-                <td>{{$a->keterangan}}</td>
-                <td>
-                    <h5><a href="art/edit/{{ $a->id }}" class="badge badge-warning"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="art/delete/{{ $a->id }}" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a></h5>
-                </td>
-            </tr>
-	        @endforeach
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <a class="btn btn-primary btn-xl text-uppercase" href="{{url('/article')}}"><i class="fas fa-arrow-left"></i>          Back to Article</a>
-    </section>
+        <section class="page-section bg-dark">
+            <font color="white"><h1>FORM EDIT DATA</h1></font>
+            <form action="/art/update/{{$brand->id}}" method="post">
+                {{csrf_field()}}
+                <input type="hidden" name="id" value="{{$brand->id}}">
+                <br/>
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" required="required" name="nama" value="{{$brand->nama}}">
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <input type="text" class="form-control" required="required" name="keterangan" value="{{$brand->keterangan}}">
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="gambar">Gambar</label>
+                    <input type="text" class="form-control" required="required" name="gambar" value="{{$brand->gambar}}">
+                    <br/>
+                </div>
+                <button type="submit" name="edit" class="btn btn-primary"><i class="fas fa-edit"></i> Ubah Data</button>
+                <a class="btn btn-primary" href="{{url('/art')}}"><i class="fas fa-arrow-left"></i> Kembali</a>
+            </form>
+        </section>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
