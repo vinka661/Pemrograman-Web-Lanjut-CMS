@@ -23,11 +23,53 @@
                 <font color="white"><h2>VAS GALLERY</h2></font>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{url('/home1')}}"><i class="fas fa-home"></i> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('/about')}}"><i class="fas fa-info"></i> About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('/article')}}"><i class="fas fa-file"></i> Article</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('/product')}}"><i class="fas fa-laptop"></i> Collection</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('/contact')}}"><i class="fas fa-address-book"></i> Contact</a></li>
+                    <li class="nav-item {{ Route::is('home') ? 'active' : '' }} ">
+                            @can('user-display')
+                                <a class="nav-link" href="{{url('/home')}}"><i class="fas fa-home"></i> Home</a>
+                            @endcan
+                        </li>
+                        <li class="nav-item {{ Route::is('about') ? 'active' : '' }} ">
+                            @can('user-display')
+                                <a class="nav-link" href="{{url('/about')}}"><i class="fas fa-info"></i> About</a>
+                            @endcan    
+                        </li>
+                        <li class="nav-item {{ Route::is('article') ? 'active' : '' }}">
+                            @can('manage-articles')
+                                <a class="nav-link" href="{{url('/article')}}"><i class="fas fa-file"></i> Article</a>
+                            @endcan
+                        </li>
+                        <li class="nav-item {{ Route::is('product') ? 'active' : '' }}">
+                            @can('manage-articles')
+                            <a class="nav-link" href="{{url('/product')}}"><i class="fas fa-laptop"></i> Collection</a>
+                            @endcan
+                        </li>
+                        <li class="nav-item {{ Route::is('contact') ? 'active' : '' }} ">
+                            @can('user-display')
+                                <a class="nav-link" href="{{url('/contact')}}"><i class="fas fa-address-book"></i> Contact</a>
+                            @endcan
+                        </li>
+                        <li class="nav-item {{ Route::is('manage') ? 'active' : '' }}">
+                            @can('manage-articles')
+                            <a class="nav-link" href="{{url('/manage')}}"><i class="fas fa-laptop"></i> Manage User</a>
+                            @endcan
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

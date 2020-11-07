@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>VAS Gallery || Halaman Contact</title>
+        <title>VAS Gallery || Halaman Edit Data Manage User</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../../css/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -74,29 +74,35 @@
                 </div>
             </div>
         </nav>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                <br>
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Berisi media sosial atau kontak yang dapat dihubungi</h3>
-                    <br>
+        <section class="page-section bg-dark">
+            <font color="white"><h1>FORM EDIT DATA</h1></font>
+            <form action="/manage/update/{{$user->id}}" method="post">
+                {{csrf_field()}}
+                <input type="hidden" name="id" value="{{$user->id}}">
+                <br/>
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" required="required" name="name" value="{{$user->name}}">
+                    <br/>
                 </div>
-                    <p>
-                        <img src="assets/img/logos/gmail.jpg" width="30" height="20" alt="" /> Email     : vinka661@gmail.com <br>
-                        <img src="assets/img/logos/wa.jpg" width="30" height="20" alt="" /> Whatsapp  : 081228710793 <br>
-                        <img src="assets/img/logos/fb.jpg" width="30" height="20" alt="" /> Facebook  : Vinka <br>
-                        <img src="assets/img/logos/ig.jpg" width="30" height="20" alt="" /> Instagram : vinkaamalias <br>
-                        <img src="assets/img/logos/line.png" width="30" height="20" alt="" /> Line      : Vinka <br>
-                        <img src="assets/img/logos/lokasi.png" width="30" height="20" alt="" /> Alamat    : Jl. Raya Penataan, Kecamatan Winongan, Kabupaten Pasuruan.
-                    </p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-            </div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="{{url('/home')}}">Next Page          <i class="fas fa-arrow-right"></i></a>
+                <div class="form-group">
+                    <label for="keterangan">Email</label>
+                    <input type="text" class="form-control" required="required" name="email" value="{{$user->email}}">
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="gambar">Password</label>
+                    <input type="password" class="form-control" required="required" name="password" value="{{$user->password}}">
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="gambar">Roles</label>
+                    <input type="text" class="form-control" required="required" name="roles" value="{{$user->roles}}">
+                    <br/>
+                </div>
+                <button type="submit" name="edit" class="btn btn-primary"><i class="fas fa-edit"></i> Ubah Data</button>
+                <a class="btn btn-primary" href="{{url('/manage')}}"><i class="fas fa-arrow-left"></i> Kembali</a>
+            </form>
         </section>
         <!-- Footer-->
         <footer class="footer py-4">
@@ -115,7 +121,6 @@
                 </div>
             </div>
         </footer>
-
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>

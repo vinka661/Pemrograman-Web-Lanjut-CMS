@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2020 at 07:05 AM
+-- Generation Time: Nov 07, 2020 at 07:16 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -127,7 +127,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_09_25_134447_create_articles_table', 1),
 (5, '2020_10_09_140319_create_brands_table', 1),
-(6, '2020_10_09_142138_create_collections_table', 2);
+(6, '2020_10_09_142138_create_collections_table', 2),
+(7, '2020_11_06_182327_modif_table_users', 3);
 
 -- --------------------------------------------------------
 
@@ -155,15 +156,18 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'vinka', 'vinka661@gmail.com', NULL, '$2y$10$jDKvZFMl9seflvj2Ik1uH.8NRRkk.vdAkJYT3Mq32Qf6BaPXvRZpG', NULL, '2020-10-09 20:48:28', '2020-10-09 20:48:28');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `roles`) VALUES
+(1, 'vinka', 'vinka661@gmail.com', NULL, '$2y$10$jDKvZFMl9seflvj2Ik1uH.8NRRkk.vdAkJYT3Mq32Qf6BaPXvRZpG', NULL, '2020-10-09 20:48:28', '2020-10-09 20:48:28', 'User'),
+(2, 'administrator', 'admin@gmail.com', NULL, '$2y$10$aeVnonO9WxLp8zjY/a9DyuYc5SPzPigMsoWG1vv/oAdX8KsSQsALa', NULL, '2020-11-06 11:40:46', '2020-11-06 11:40:46', 'Administrator'),
+(3, 'amalia', 'amalia@gmail.com', NULL, '$2y$10$kJsF.ewUt5OqkSV3GgosN.tttVdG3kly9DPsvpX.ax7T03tnnVhau', NULL, '2020-11-06 20:49:48', '2020-11-06 20:49:48', 'User');
 
 --
 -- Indexes for dumped tables
@@ -244,13 +248,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

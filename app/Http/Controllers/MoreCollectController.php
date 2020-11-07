@@ -7,6 +7,12 @@ use App\Collection;
 
 class MoreCollectController extends Controller
 {
+    //agar halaman ini tidak tampil sebelum melakukan login
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function Collect()
     {
         $collection = Collection::all();

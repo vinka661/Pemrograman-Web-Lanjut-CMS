@@ -7,6 +7,12 @@ use App\Brand;
 
 class MoreArtController extends Controller
 {
+    //agar halaman ini tidak tampil sebelum melakukan login
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function Art()
     {
         $brand = Brand::all();

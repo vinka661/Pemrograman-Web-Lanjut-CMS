@@ -22,7 +22,7 @@
 Route::get('/home1', 'HomeController1@Home1');
 Route::get('/about', 'AboutController@About');
 Route::get('/contact', 'ContactController@Contact');
-Route::get('/article', 'ArticleController@Article');
+//Route::get('/article', 'ArticleController@Article');
 Route::get('/art', 'MoreArtController@Art');
 Route::get('/product', 'ProductController@Product');
 Route::get('/collect', 'MoreCollectController@Collect');
@@ -34,6 +34,7 @@ Route::get('/', function () {
 
 Auth:: routes();
 Route::get('/home', 'HomeController1@home1')->name('home');
+Route::get('/article', 'ArticleController@Article')->name('article');
 //route untuk menampilkan halaman tambah data
 Route::get('/collect/add', 'MoreCollectController@add');
 //route untuk memproses penambahan data
@@ -55,3 +56,15 @@ Route::post('/art/update/{id}', 'MoreArtController@update');
 //route untuk memproses hapus data
 Route::get('/art/delete/{id}', 'MoreArtController@delete');
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/manage', 'ManageUserController@ManageUser');
+//route untuk menampilkan halaman tambah data
+Route::get('/manage/add', 'ManageUserController@add');
+//route untuk memproses penambahan data
+Route::post('/manage/create', 'ManageUserController@create');
+//route untuk menampilkan halaman edit data
+Route::get('/manage/edit/{id}', 'ManageUserController@edit');
+//route untuk memproses update data
+Route::post('/manage/update/{id}', 'ManageUserController@update');
+//route untuk memproses hapus data
+Route::get('/manage/delete/{id}', 'ManageUserController@delete');

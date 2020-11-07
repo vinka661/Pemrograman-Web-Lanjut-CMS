@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>VAS Gallery || Halaman Contact</title>
+        <title>VAS Gallery || Halaman Manage User</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -74,30 +74,45 @@
                 </div>
             </div>
         </nav>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                <br>
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Berisi media sosial atau kontak yang dapat dihubungi</h3>
-                    <br>
-                </div>
-                    <p>
-                        <img src="assets/img/logos/gmail.jpg" width="30" height="20" alt="" /> Email     : vinka661@gmail.com <br>
-                        <img src="assets/img/logos/wa.jpg" width="30" height="20" alt="" /> Whatsapp  : 081228710793 <br>
-                        <img src="assets/img/logos/fb.jpg" width="30" height="20" alt="" /> Facebook  : Vinka <br>
-                        <img src="assets/img/logos/ig.jpg" width="30" height="20" alt="" /> Instagram : vinkaamalias <br>
-                        <img src="assets/img/logos/line.png" width="30" height="20" alt="" /> Line      : Vinka <br>
-                        <img src="assets/img/logos/lokasi.png" width="30" height="20" alt="" /> Alamat    : Jl. Raya Penataan, Kecamatan Winongan, Kabupaten Pasuruan.
-                    </p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-            </div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="{{url('/home')}}">Next Page          <i class="fas fa-arrow-right"></i></a>
-        </section>
+        <section class="page-section bg-dark center">
+        <a href="manage/add" class="btn btn-primary float-left"><i class="fas fa-plus"></i> Tambah Data</a>
+        <br>
+        <br>
+        <table class="table-bordered">
+        <thead>
+            <tr>
+                <th width="300">Nama</th>
+                <th width="300">Email</th>
+                <th width="500">Password</th>
+                <th width="300">Roles</th>
+                <th width="300">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($user as $u)
+		    <tr>
+                <td>{{$u->name}}</td>
+                <td>{{$u->email}}</td>
+                <td>{{$u->password}}</td>
+                <td>{{$u->roles}}</td>
+                <td>
+                    <h5><a href="manage/edit/{{ $u->id }}" class="badge badge-warning"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="manage/delete/{{ $u->id }}" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a></h5>
+                </td>
+            </tr>
+	        @endforeach
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a class="btn btn-primary btn-xl text-uppercase" href="{{url('/manage')}}"><i class="fas fa-arrow-left"></i>          Back to Manage User</a>
+    </section>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
@@ -115,7 +130,6 @@
                 </div>
             </div>
         </footer>
-
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
