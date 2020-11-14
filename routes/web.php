@@ -68,3 +68,7 @@ Route::get('/manage/edit/{id}', 'ManageUserController@edit');
 Route::post('/manage/update/{id}', 'ManageUserController@update');
 //route untuk memproses hapus data
 Route::get('/manage/delete/{id}', 'ManageUserController@delete');
+//route untuk menjalankan fungsi cetak pdf halaman artikel
+Route::get('/art/cetak_pdf', 'MoreArtController@cetak_pdf');
+//route untuk menjalankan fungsi cetak pdf halaman collection
+Route::get('/collect/cetak_pdf', 'MoreCollectController@cetak_pdf');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Collection;
+use PDF;
 
 class MoreCollectController extends Controller
 {
@@ -59,5 +60,11 @@ class MoreCollectController extends Controller
         $collection = Collection::find($id);
         $collection->delete();
         return redirect('/collect');
+    }
+    //cetak pdf
+    public function cetak_pdf() {
+        $collection = Collection::all();
+        $pdf = PDF::loadview('collection_pdf',['collection' => $collection]);
+        return $pdf->stream();
     }
 }

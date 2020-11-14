@@ -76,7 +76,7 @@
         </nav>
         <section class="page-section bg-dark">
             <font color="white"><h1>FORM EDIT DATA</h1></font>
-            <form action="/art/update/{{$brand->id}}" method="post">
+            <form action="/art/update/{{$brand->id}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <input type="hidden" name="id" value="{{$brand->id}}">
                 <br/>
@@ -92,7 +92,8 @@
                 </div>
                 <div class="form-group">
                     <label for="gambar">Gambar</label>
-                    <input type="text" class="form-control" required="required" name="gambar" value="{{$brand->gambar}}">
+                    <input type="file" class="form-control" required="required" name="gambar" value="{{$brand->gambar}}">
+                    <img width="150px" src="{{asset('storage/'.$brand->gambar)}}">
                     <br/>
                 </div>
                 <button type="submit" name="edit" class="btn btn-primary"><i class="fas fa-edit"></i> Ubah Data</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Brand;
+use PDF;
 
 class MoreArtController extends Controller
 {
@@ -30,10 +31,14 @@ class MoreArtController extends Controller
     //proses penambahan data
     public function create(Request $request)
     {
+        if($request->file('gambar')) {
+            $image_name = $request->file('gambar')->store('images','public');
+        }
+
         Brand::create([
             'nama' => $request->nama,
             'keterangan' => $request->keterangan,
-            'gambar' => $request->gambar
+            'gambar' => $image_name,
         ]);
         return redirect('/art');
     }
@@ -49,7 +54,14 @@ class MoreArtController extends Controller
         $brand = Brand::find($id);
         $brand->nama = $request->nama;
         $brand->keterangan = $request->keterangan;
-        $brand->gambar = $request->gambar;
+        
+        if($brand->gambar && file_exists(storage_path('app/public/' . $brand->gambar)))
+        {
+            \Storage::delete('public/'.$brand->gambar);
+        }
+        $image_name = $request->file('gambar')->store('images', 'public');
+        $brand->gambar = $image_name;
+
         $brand->save();
         return redirect('/art');
     }
@@ -59,5 +71,11 @@ class MoreArtController extends Controller
         $brand = Brand::find($id);
         $brand->delete();
         return redirect('/art');
+    }
+    //cetak pdf
+    public function cetak_pdf() {
+        $brand = Brand::all();
+        $pdf = PDF::loadview('articles_pdf',['brand'=>$brand]);
+        return $pdf->stream();
     }
 }

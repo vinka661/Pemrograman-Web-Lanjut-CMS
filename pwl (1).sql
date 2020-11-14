@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2020 at 07:16 AM
+-- Generation Time: Nov 14, 2020 at 04:14 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -57,10 +57,11 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `nama`, `keterangan`, `gambar`, `created_at`, `updated_at`) VALUES
-(1, 'Lenovo', 'Brand laptop terbaik nomor 1 yaitu Lenovo Ideapad 320-14IKB', 'http://localhost/1.jpg', NULL, NULL),
-(2, 'HP', 'Brand laptop terbaik nomor 2 yaitu HP Chromebook', 'http://localhost/../assets/img/laptop/2.jpg', NULL, NULL),
-(3, 'Asus', 'Brand laptop terbaik nomor 3 yaitu Asus ZenBook Flip 14', 'http://localhost/../assets/img/laptop/3.jpg', NULL, NULL),
-(5, 'dell', 'laptop dell bagus, menarik, keren', '1233abc', '2020-10-19 05:32:16', '2020-10-19 05:32:49');
+(1, 'Lenovo', 'Brand laptop terbaik nomor 1 yaitu Lenovo Ideapad 320-14IKB', 'images/qlmmXwWwQ2kmeTTVtm9xUGB4fcLYL2yAoqDMuFh3.jpeg', NULL, '2020-11-13 19:35:45'),
+(2, 'HP', 'Brand laptop terbaik nomor 2 yaitu HP Chromebook', 'images/UZzk8Z6RUOjRtAVrwn1dTGt7t1oQpeHpKtPL5jmL.jpeg', NULL, '2020-11-13 19:37:24'),
+(3, 'Asus', 'Brand laptop terbaik nomor 3 yaitu Asus ZenBook Flip 14', 'images/KNhOrnrvYOIC8d4tt3rwy5FUDkpY2i0zlB56NF3o.jpeg', NULL, '2020-11-13 19:39:13'),
+(5, 'dell', 'laptop dell bagus, menarik, keren', 'images/yJxaxLuQEiYEQCnpw2gZGHVeFNWyuvaBdHp2fMej.jpeg', '2020-10-19 05:32:16', '2020-11-13 19:40:38'),
+(7, 'Acer Swift 3', 'Laptop yang keren dan fleksibel', 'images/VfZWoGf3VghVRtmAKe45As5LmibduZX3PaPWk9XX.jpeg', '2020-11-13 04:04:03', '2020-11-13 05:21:56');
 
 -- --------------------------------------------------------
 
@@ -230,7 +231,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `collections`

@@ -75,7 +75,10 @@
             </div>
         </nav>
         <section class="page-section bg-dark center">
-        <a href="art/add" class="btn btn-primary float-left"><i class="fas fa-plus"></i> Tambah Data</a>
+        <div class="tombol float-left">
+            <a href="art/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+            <a href="art/cetak_pdf" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Cetak PDF</a>
+        </div>
         <br>
         <br>
         <table class="table-bordered">
@@ -83,6 +86,7 @@
             <tr>
                 <th width="300">Nama</th>
                 <th width="500">Keterangan</th>
+                <th width="300">Gambar</th>
                 <th width="300">Action</th>
             </tr>
         </thead>
@@ -91,6 +95,7 @@
 		    <tr>
                 <td>{{$a->nama}}</td>
                 <td>{{$a->keterangan}}</td>
+                <td><img width="150px" src="{{asset('storage/'.$a->gambar)}}"></td>
                 <td>
                     <h5><a href="art/edit/{{ $a->id }}" class="badge badge-warning"><i class="fas fa-edit"></i> Edit</a>
                     <a href="art/delete/{{ $a->id }}" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a></h5>
@@ -99,8 +104,6 @@
 	        @endforeach
         </tbody>
     </table>
-    <br>
-    <br>
     <br>
     <br>
     <br>

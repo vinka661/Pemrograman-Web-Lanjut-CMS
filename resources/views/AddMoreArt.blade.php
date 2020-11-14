@@ -77,7 +77,7 @@
         <section class="page-section bg-dark">
             <font color="white"><h1>FORM TAMBAH DATA</h1></font>
             <br/>
-            <form action="/art/create" method="post">
+            <form action="/art/create" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nama">Nama</label>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group">
                     <label for="gambar">Gambar</label>
-                    <input type="text" class="form-control" required="required" name="gambar">
+                    <input type="file" class="form-control" required="required" name="gambar">
                     <br/>
                 </div>
                 <button type="submit" name="add" class="btn btn-primary"><i class="fas fa-save"></i> Tambah Data</button>
