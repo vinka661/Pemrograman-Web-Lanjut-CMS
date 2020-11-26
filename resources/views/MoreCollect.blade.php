@@ -33,15 +33,15 @@
                                 <a class="nav-link" href="{{url('/about')}}"><i class="fas fa-info"></i> About</a>
                             @endcan    
                         </li>
-                        <li class="nav-item {{ Route::is('article') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                            
                                 <a class="nav-link" href="{{url('/article')}}"><i class="fas fa-file"></i> Article</a>
-                            @endcan
+                            
                         </li>
-                        <li class="nav-item {{ Route::is('product') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                           
                             <a class="nav-link" href="{{url('/product')}}"><i class="fas fa-laptop"></i> Collection</a>
-                            @endcan
+                            
                         </li>
                         <li class="nav-item {{ Route::is('contact') ? 'active' : '' }} ">
                             @can('user-display')
@@ -75,10 +75,10 @@
             </div>
         </nav>
         <section class="page-section bg-dark">
-        <div class="tombol float-left">
+        @can('manage-articles')<div class="tombol float-left">
             <a href="collect/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
             <a href="collect/cetak_pdf" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Cetak PDF</a>
-        </div>
+        </div>@endcan
         <br>
         <br>
         <table class="table-bordered">
@@ -87,7 +87,7 @@
                 <th>Nama</th>
                 <th>Merk</th>
                 <th>Keterangan</th>
-                <th>Action</th>
+                @can('manage-articles')<th>Action</th>@endcan
             </tr>
         </thead>
         <tbody>
@@ -96,10 +96,10 @@
                 <td width="300">{{$c->nama}}</td>
                 <td width="400">{{$c->merk}}</td>
                 <td width="700">{{$c->keterangan}}</td>
-                <td width="200">
+                @can('manage-articles')<td width="200">
                     <h5><a href="collect/edit/{{ $c->id }}" class="badge badge-warning"><i class="fas fa-edit"></i> Edit</a>
                     <a href="collect/delete/{{ $c->id }}" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a></h5>
-                </td>
+                </td>@endcan
             </tr>
 	        @endforeach
         </tbody>

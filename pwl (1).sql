@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2020 at 04:14 AM
+-- Generation Time: Nov 26, 2020 at 05:02 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -61,7 +61,9 @@ INSERT INTO `brands` (`id`, `nama`, `keterangan`, `gambar`, `created_at`, `updat
 (2, 'HP', 'Brand laptop terbaik nomor 2 yaitu HP Chromebook', 'images/UZzk8Z6RUOjRtAVrwn1dTGt7t1oQpeHpKtPL5jmL.jpeg', NULL, '2020-11-13 19:37:24'),
 (3, 'Asus', 'Brand laptop terbaik nomor 3 yaitu Asus ZenBook Flip 14', 'images/KNhOrnrvYOIC8d4tt3rwy5FUDkpY2i0zlB56NF3o.jpeg', NULL, '2020-11-13 19:39:13'),
 (5, 'dell', 'laptop dell bagus, menarik, keren', 'images/yJxaxLuQEiYEQCnpw2gZGHVeFNWyuvaBdHp2fMej.jpeg', '2020-10-19 05:32:16', '2020-11-13 19:40:38'),
-(7, 'Acer Swift 3', 'Laptop yang keren dan fleksibel', 'images/VfZWoGf3VghVRtmAKe45As5LmibduZX3PaPWk9XX.jpeg', '2020-11-13 04:04:03', '2020-11-13 05:21:56');
+(7, 'Acer Swift 3', 'Laptop yang keren dan fleksibel', 'images/VfZWoGf3VghVRtmAKe45As5LmibduZX3PaPWk9XX.jpeg', '2020-11-13 04:04:03', '2020-11-13 05:21:56'),
+(8, 'abc', 'ddwe', 'images/gCF62ZIRbB6Diy19Ru7xtKOgu65bE7Bu7MNOOZVO.jpeg', '2020-11-15 06:59:21', '2020-11-24 07:57:18'),
+(9, 'a1', 'abc', 'images/xY0suBawOkB8e6M0qnsYz8fJ4f4z5hG3vQ05GZcx.jpeg', '2020-11-25 20:35:11', '2020-11-25 20:35:49');
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,8 @@ INSERT INTO `collections` (`id`, `nama`, `merk`, `keterangan`, `created_at`, `up
 (4, 'HP', 'HP Omen DH0105TX', 'Operating System : Windows 10 Home\n                                    Processor : Intel Core i7-9750H\n                                    Memory RAM : 16 GB DDR4\n                                    Penyimpanan : 512 GB SSD + 1 TB HDD\n                                    Ukuran Layar : 15.6 inch Full HD IPS Anti-Glare, 144 Hz', NULL, NULL),
 (5, 'Asus', 'Asus ZenBook Flip 14', 'Operating System : Windows 10\n                                    Processor : Intel Core i78550U, 2.5 GHz \n                                    Memory RAM : 16 GB\n                                    Penyimpanan : 512 GB HDD\n                                    Ukuran Layar : 14 inch\n                                    Resolusi : 1920 x 1080 pixels', NULL, NULL),
 (6, 'Asus', 'Asus VivoBook S13 S330FA', 'Operating System : Windows 10 Home\n                                    Processor : Intel Core i5-8265U\n                                    Memory RAM : 4 GB LPDDR3\n                                    Penyimpanan : 256 GB SSD\n                                    Ukuran Layar : 13.3-inch Full HD Ultraslim', NULL, NULL),
-(7, 'asus x451na', 'asus', 'bagus dan keren', '2020-10-19 00:40:52', '2020-10-19 01:15:43');
+(7, 'asus x451na', 'asus', 'bagus dan keren', '2020-10-19 00:40:52', '2020-10-19 01:15:43'),
+(11, 'abc123', 'abc12345', 'bagus banget dan keren', '2020-11-25 20:38:11', '2020-11-25 20:38:33');
 
 -- --------------------------------------------------------
 
@@ -129,7 +132,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2020_09_25_134447_create_articles_table', 1),
 (5, '2020_10_09_140319_create_brands_table', 1),
 (6, '2020_10_09_142138_create_collections_table', 2),
-(7, '2020_11_06_182327_modif_table_users', 3);
+(7, '2020_11_06_182327_modif_table_users', 3),
+(8, '2020_11_25_065841_foto_tabel_users', 4),
+(9, '2020_11_25_173009_modif_table_users', 5),
+(10, '2020_11_25_180107_modif_table_users', 6);
 
 -- --------------------------------------------------------
 
@@ -158,17 +164,17 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `roles`) VALUES
-(1, 'vinka', 'vinka661@gmail.com', NULL, '$2y$10$jDKvZFMl9seflvj2Ik1uH.8NRRkk.vdAkJYT3Mq32Qf6BaPXvRZpG', NULL, '2020-10-09 20:48:28', '2020-10-09 20:48:28', 'User'),
-(2, 'administrator', 'admin@gmail.com', NULL, '$2y$10$aeVnonO9WxLp8zjY/a9DyuYc5SPzPigMsoWG1vv/oAdX8KsSQsALa', NULL, '2020-11-06 11:40:46', '2020-11-06 11:40:46', 'Administrator'),
-(3, 'amalia', 'amalia@gmail.com', NULL, '$2y$10$kJsF.ewUt5OqkSV3GgosN.tttVdG3kly9DPsvpX.ax7T03tnnVhau', NULL, '2020-11-06 20:49:48', '2020-11-06 20:49:48', 'User');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `roles`, `foto`) VALUES
+(13, 'administrator', 'admin@gmail.com', NULL, '$2y$10$8MTCPDdD74N/g/2CHxP8jeyTbMWsCDk3IqeIcLhUMTB5U/Yd4taXu', NULL, '2020-11-25 20:55:02', '2020-11-25 20:57:24', 'Administrator', 'images/tifpvCFotGHHgB9jfEnJSvvcJYjoRKzaCKDAXBBg.jpeg'),
+(14, 'user1', 'user1@gmail.com', NULL, '$2y$10$YUykhlssvUzwDX7yenqX1eU0ZwtJ4MeK8O45ZVAuAxBmWLJlLDfJ2', NULL, '2020-11-25 20:59:17', '2020-11-25 21:00:29', 'User', 'images/jBY3CB4qLzbHHJwwzBspcyG2WCjcozEizBxmvG0s.png');
 
 --
 -- Indexes for dumped tables
@@ -231,13 +237,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -249,13 +255,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

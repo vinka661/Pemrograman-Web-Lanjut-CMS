@@ -33,15 +33,15 @@
                                 <a class="nav-link" href="{{url('/about')}}"><i class="fas fa-info"></i> About</a>
                             @endcan    
                         </li>
-                        <li class="nav-item {{ Route::is('article') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                            
                                 <a class="nav-link" href="{{url('/article')}}"><i class="fas fa-file"></i> Article</a>
-                            @endcan
+                            
                         </li>
-                        <li class="nav-item {{ Route::is('product') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                           
                             <a class="nav-link" href="{{url('/product')}}"><i class="fas fa-laptop"></i> Collection</a>
-                            @endcan
+                            
                         </li>
                         <li class="nav-item {{ Route::is('contact') ? 'active' : '' }} ">
                             @can('user-display')
@@ -77,7 +77,7 @@
         <section class="page-section bg-dark">
             <font color="white"><h1>FORM TAMBAH DATA</h1></font>
             <br/>
-            <form action="/manage/create" method="post">
+            <form action="/manage/create" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nama">Nama</label>
@@ -105,6 +105,11 @@
                         <option value="Administrator">Administrator</option>
                         <option value="User">User</option>
                     </select>
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="gambar">Foto</label>
+                    <input type="file" class="form-control" required="required" name="foto">
                     <br/>
                 </div>
 

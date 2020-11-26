@@ -33,15 +33,15 @@
                                 <a class="nav-link" href="{{url('/about')}}"><i class="fas fa-info"></i> About</a>
                             @endcan    
                         </li>
-                        <li class="nav-item {{ Route::is('article') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                            
                                 <a class="nav-link" href="{{url('/article')}}"><i class="fas fa-file"></i> Article</a>
-                            @endcan
+                            
                         </li>
-                        <li class="nav-item {{ Route::is('product') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                           
                             <a class="nav-link" href="{{url('/product')}}"><i class="fas fa-laptop"></i> Collection</a>
-                            @endcan
+                            
                         </li>
                         <li class="nav-item {{ Route::is('contact') ? 'active' : '' }} ">
                             @can('user-display')
@@ -76,7 +76,7 @@
         </nav>
         <section class="page-section bg-dark">
             <font color="white"><h1>FORM EDIT DATA</h1></font>
-            <form action="/manage/update/{{$user->id}}" method="post">
+            <form action="/manage/update/{{$user->id}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <input type="hidden" name="id" value="{{$user->id}}">
                 <br/>
@@ -90,14 +90,20 @@
                     <input type="text" class="form-control" required="required" name="email" value="{{$user->email}}">
                     <br/>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="gambar">Password</label>
                     <input type="password" class="form-control" required="required" name="password" value="{{$user->password}}">
                     <br/>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <label for="gambar">Roles</label>
                     <input type="text" class="form-control" required="required" name="roles" value="{{$user->roles}}">
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="file" class="form-control" required="required" name="foto" value="{{$user->foto}}">
+                    <img width="150px" src="{{asset('storage/'.$user->foto)}}">
                     <br/>
                 </div>
                 <button type="submit" name="edit" class="btn btn-primary"><i class="fas fa-edit"></i> Ubah Data</button>

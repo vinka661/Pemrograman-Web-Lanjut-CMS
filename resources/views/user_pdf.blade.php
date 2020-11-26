@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>VAS Gallery || Laporan Data Artikel</title>
+        <title>Laporan PDF dengan DOMPDF Laravel</title>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <center>
-            <h5>Laporan Data Artikel</h5>
+            <h5>Laporan Data User</h5>
         </center>
         <br>
 
@@ -20,18 +20,20 @@
                 <tr class="table-secondary">
                     <th width="20">No</th>
                     <th width="30">Nama</th>
-                    <th width="100">Keterangan</th>
-                    <th width="150">Gambar</th>
+                    <th width="100">Email</th>
+                    <th width="300">Roles</th>
+                    <th width="350">Foto</th>
                 </tr>
             </thead>
             <tbody>
                 @php $i=1 @endphp
-                @foreach($brand as $b)
+                @foreach($user as $u)
                 <tr>
                     <td>{{ $i++ }}</td>
-                    <td>{{$b->nama}}</td>
-                    <td>{{$b->keterangan}}</td>
-                    <td><img width="150" src="{{'storage/'.$b->gambar}}"></td>
+                    <td>{{$u->name}}</td>
+                    <td>{{$u->email}}</td>
+                    <td>{{$u->roles}}</td>
+                    <td><img width="150" src="{{'storage/'.$u->foto}}"></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -33,15 +33,15 @@
                                 <a class="nav-link" href="{{url('/about')}}"><i class="fas fa-info"></i> About</a>
                             @endcan    
                         </li>
-                        <li class="nav-item {{ Route::is('article') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                            
                                 <a class="nav-link" href="{{url('/article')}}"><i class="fas fa-file"></i> Article</a>
-                            @endcan
+                            
                         </li>
-                        <li class="nav-item {{ Route::is('product') ? 'active' : '' }}">
-                            @can('manage-articles')
+                        <li class="nav-item">
+                           
                             <a class="nav-link" href="{{url('/product')}}"><i class="fas fa-laptop"></i> Collection</a>
-                            @endcan
+                            
                         </li>
                         <li class="nav-item {{ Route::is('contact') ? 'active' : '' }} ">
                             @can('user-display')
@@ -75,7 +75,10 @@
             </div>
         </nav>
         <section class="page-section bg-dark center">
-        <a href="manage/add" class="btn btn-primary float-left"><i class="fas fa-plus"></i> Tambah Data</a>
+        <div class="tombol float-left">
+            <a href="manage/add" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+            <a href="manage/cetak_pdf" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Cetak PDF</a>
+        </div>
         <br>
         <br>
         <table class="table-bordered">
@@ -83,8 +86,8 @@
             <tr>
                 <th width="300">Nama</th>
                 <th width="300">Email</th>
-                <th width="500">Password</th>
                 <th width="300">Roles</th>
+                <th width="300">Foto</th>
                 <th width="300">Action</th>
             </tr>
         </thead>
@@ -93,8 +96,8 @@
 		    <tr>
                 <td>{{$u->name}}</td>
                 <td>{{$u->email}}</td>
-                <td>{{$u->password}}</td>
                 <td>{{$u->roles}}</td>
+                <td><img width="150px" src="{{asset('storage/'.$u->foto)}}"></td>
                 <td>
                     <h5><a href="manage/edit/{{ $u->id }}" class="badge badge-warning"><i class="fas fa-edit"></i> Edit</a>
                     <a href="manage/delete/{{ $u->id }}" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a></h5>

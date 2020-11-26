@@ -72,3 +72,5 @@ Route::get('/manage/delete/{id}', 'ManageUserController@delete');
 Route::get('/art/cetak_pdf', 'MoreArtController@cetak_pdf');
 //route untuk menjalankan fungsi cetak pdf halaman collection
 Route::get('/collect/cetak_pdf', 'MoreCollectController@cetak_pdf');
+//route untuk menjalankan fungsi cetak pdf halaman user
+Route::get('/manage/cetak_pdf', 'ManageUserController@cetak_pdf');

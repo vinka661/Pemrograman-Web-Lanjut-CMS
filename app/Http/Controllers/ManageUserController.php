@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class ManageUserController extends Controller
 {
@@ -32,11 +33,16 @@ class ManageUserController extends Controller
     //proses penambahan data
     public function create(Request $request)
     {
+        if($request->file('foto')) {
+            $image_name = $request->file('foto')->store('images','public');
+        }
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'roles' => $request->roles,
+            'foto' => $image_name,
         ]);
         return redirect('/manage');
     }
@@ -54,8 +60,14 @@ class ManageUserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        //$user->password = Hash::make($request->password);
         $user->roles = $request->roles;
+        if($user->foto && file_exists(storage_path('app/public/' . $user->foto)))
+        {
+            \Storage::delete('public/'.$user->foto);
+        }
+        $image_name = $request->file('foto')->store('images', 'public');
+        $user->foto = $image_name;
         $user->save();
         return redirect('/manage');
     }
@@ -66,5 +78,12 @@ class ManageUserController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect('/manage');
+    }
+
+    //cetak pdf
+    public function cetak_pdf() {
+        $user = User::all();
+        $pdf = PDF::loadview('user_report',['user'=>$user]);
+        return $pdf->stream();
     }
 }
